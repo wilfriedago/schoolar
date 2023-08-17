@@ -49,7 +49,7 @@ This submodule contains a Spring Boot backend application.
 
 ### Setup
 
-1. Navigate to the `apps/backend` directory:
+1. Navigate to the `apps/api` directory:
    ```sh
    cd apps/api
    ```
