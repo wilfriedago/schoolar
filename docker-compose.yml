@@ -1,0 +1,37 @@
+version: "3.8"
+name: ${PROJECT_NAME}
+
+services:
+  minio:
+    image: quay.io/minio/minio:latest
+    container_name: ${PROJECT_NAME}-minio
+    ports:
+      - ${MINIO_CONSOLE_PORT}:9000
+      - ${MINIO_PORT}:9090
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9090"
+
+  api:
+    image: imageName
+    networks:
+      - network
+
+  web:
+    image: imageName
+    networks:
+      - network
+  depends_on:
+    api:
+      condition: service_healthy
+
+volumes:
+  minio_data:
+
+
+networks:
+  network:
+    driver: bridge

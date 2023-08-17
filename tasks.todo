@@ -1,0 +1,8 @@
+# Small list of things to do before the presentation
+
+- [ ] : Get some cool icons from icônes (Check your bookmarks)
+- [ ] : Prepare a speech, ask ChatGPT
+- [ ] : Set up renovate for automatically dependencies updates
+
+- [ ] : Switch to gradle for the api, for faster build
+- [ ] : Check this https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist

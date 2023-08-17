@@ -1,0 +1,80 @@
+version: "3.4"
+name: ${PROJECT_NAME}
+services:
+  database:
+    image: postgres:latest
+    hostname: postgres
+    restart: unless-stopped
+    container_name: ${PROJECT_NAME}-database
+    command:
+      [
+        "postgres",
+        "-c",
+        "log_statement=all",
+        "-c",
+        "log_destination=stderr"
+      ]
+    ports:
+      - ${DB_PORT}:5432
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      TZ: ${TIMEZONE}
+      PGTZ: ${TIMEZONE}
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "${DB_USERNAME}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    tty: true
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+    networks:
+      - network
+
+  smtp:
+    image: maildev/maildev
+    restart: unless-stopped
+    container_name: ${PROJECT_NAME}-smtp
+    ports:
+      - ${SMTP_PORT}:1025
+      - ${SMTP_UI_PORT}:1080
+    networks:
+      - network
+
+  minio:
+    image: quay.io/minio/minio
+    container_name: ${PROJECT_NAME}-minio
+    ports:
+      - ${MINIO_CONSOLE_PORT}:9000
+      - ${MINIO_PORT}:9090
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9090"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: unless-stopped
+    container_name: ${PROJECT_NAME}-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+    ports:
+      - ${PGADMIN_PORT}:80
+    networks:
+      - network
+
+volumes:
+  minio_data:
+  postgresql:
+  postgresql_data:
+
+
+networks:
+  network:
+    driver: bridge
