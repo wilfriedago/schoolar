@@ -43,7 +43,7 @@ This submodule contains a Next.js front-end application.
 
 The Next.js application should now be running locally.
 
-## Submodule 2: Spring Boot Backend (apps/backend)
+## Submodule 2: Spring Boot Backend (apps/api)
 
 This submodule contains a Spring Boot backend application.
 
@@ -51,7 +51,7 @@ This submodule contains a Spring Boot backend application.
 
 1. Navigate to the `apps/backend` directory:
    ```sh
-   cd apps/backend
+   cd apps/api
    ```
 
 2. Install required tools:
@@ -65,7 +65,7 @@ This submodule contains a Spring Boot backend application.
 
 4. Run the application:
    ```sh
-   java -jar target/backend.jar
+   java -jar target/api.jar
    ```
 
 The Spring Boot application should now be running and accessible.
