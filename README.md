@@ -1,6 +1,6 @@
 # Schoolar
 
-Welcome to the schoolar repository! This project is structured with two (submodules)[https://git-scm.com/docs/gitsubmodules], each serving a distinct purpose. To clone and set up the project effectively, follow the instructions below.
+Welcome to the schoolar repository! This project is structured with two [submodules](https://git-scm.com/docs/gitsubmodules), each serving a distinct purpose. To clone and set up the project effectively, follow the instructions below.
 
 ## Cloning the Repository
 
