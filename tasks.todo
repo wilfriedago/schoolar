@@ -1,8 +1,10 @@
-# Small list of things to do before the presentation
+# Tasks to do
 
 - [ ] : Get some cool icons from icônes (Check your bookmarks)
 - [ ] : Prepare a speech, ask ChatGPT
 - [ ] : Set up renovate for automatically dependencies updates
 
+## Not Urgent
 - [ ] : Switch to gradle for the api, for faster build
 - [ ] : Check this https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist
+- [ ] : Do some research on how to use [OptaPlanner](https://www.optaplanner.org/) to optimize timetable scheduling following multiple constraints.
